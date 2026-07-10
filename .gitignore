@@ -5,7 +5,7 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 
-# Poetry e Ambientes Virtuais (Essencial)
+# Ambientes Virtuais (Essencial)
 .venv/
 
 # Django (Banco de dados local e mídias)
