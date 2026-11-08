@@ -1,0 +1,46 @@
+{% extends 'blog/base.html' %}
+
+
+{% block content %}
+<style>
+    .masthead {
+        padding-top: 10px;
+        padding-bottom: 15px;
+        height: auto;
+        background: #3398E1;
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+
+    .card {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+</style>
+
+<header class="masthead">
+    <div class="container-md">
+        <div class="row">
+            <div class=" col-md-8 col-md-10 mx-auto">
+                <div>
+                    <h3 class="my-4 mt-3 text-white"> Bem Vindo ao meu Blog </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container-md">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8 mt-3 left">
+            {% for post in post_list %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
+                    <p class="card-text">{{post.content|slice:":200" }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% endblock %}
