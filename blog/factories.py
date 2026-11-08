@@ -1,17 +1,18 @@
 import factory
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.utils.text import slugify
 from blog.models import Post
 
+User = get_user_model()
 
 class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = User
-        skip_postgeneration_save = True
+        django_get_or_create = ('username',)
 
     username = factory.Sequence(lambda n: f"user{n}")
-    email = factory.LazyAttribute(lambda obj: f"{obj.username}@example.com")
-    password = factory.PostGenerationMethodCall("set_password", "password123")
+    email = factory.Faker('email')
+    password = factory.PostGenerationMethodCall('set_password', '12345')
 
 class PostFactory(factory.django.DjangoModelFactory):
     class Meta:
